@@ -9,6 +9,9 @@ import {
 
 import type { Route } from './+types/root'
 import './app.css'
+import '@mantine/core/styles.css'
+import '@mantine/dates/styles.css'
+import { MantineProvider } from '@mantine/core'
 
 export const links: Route.LinksFunction = () => [
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -34,9 +37,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 />
                 <Meta />
                 <Links />
+                <link
+                    rel="icon"
+                    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⏱️</text></svg>"
+                />
             </head>
             <body>
-                {children}
+                <MantineProvider defaultColorScheme="dark">
+                    {children}
+                </MantineProvider>
                 <ScrollRestoration />
                 <Scripts />
             </body>
