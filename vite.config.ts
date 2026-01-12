@@ -3,7 +3,6 @@ import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
-export default defineConfig({
-    base: '/CarWarmingTimer/',
+export default defineConfig(({ mode }) => ({
     plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
-})
+}))
