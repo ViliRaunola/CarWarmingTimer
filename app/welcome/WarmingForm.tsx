@@ -1,5 +1,4 @@
-import { DateTimePicker, TimePicker } from '@mantine/dates'
-import { Button } from '@mantine/core'
+import { Button, TextInput } from '@mantine/core'
 import { useForm } from '@tanstack/react-form'
 import dayjs from 'dayjs'
 
@@ -16,7 +15,7 @@ interface WarmingFormProps {
 export function WarmingForm({ onSubmit }: WarmingFormProps) {
     const form = useForm({
         defaultValues: {
-            leaveTime: dayjs().format('YYYY-MM-DD HH:mm'),
+            leaveTime: dayjs().format('YYYY-MM-DDTHH:mm'),
             warmDuration: '00:30',
             offsetDuration: '02:00',
         } as IWarmingForm,
@@ -39,30 +38,33 @@ export function WarmingForm({ onSubmit }: WarmingFormProps) {
             <Field
                 name="leaveTime"
                 children={({ state, handleChange }) => (
-                    <DateTimePicker
-                        value={state.value}
+                    <TextInput
+                        type="datetime-local"
+                        value={state.value ?? ''}
                         label="Valitse lähtöaika"
-                        onChange={(value) => handleChange(value)}
+                        onChange={(e) => handleChange(e.target.value)}
                     />
                 )}
             />
             <Field
                 name="warmDuration"
                 children={({ state, handleChange }) => (
-                    <TimePicker
+                    <TextInput
+                        type="time"
                         value={state.value}
                         label="Kuinka pitkään autoa lämmitetään?"
-                        onChange={(value) => handleChange(value)}
+                        onChange={(e) => handleChange(e.target.value)}
                     />
                 )}
             />
             <Field
                 name="offsetDuration"
                 children={({ state, handleChange }) => (
-                    <TimePicker
+                    <TextInput
+                        type="time"
                         value={state.value}
                         label="Kuinka pitkään ajastin lämmittää autoa?"
-                        onChange={(value) => handleChange(value)}
+                        onChange={(e) => handleChange(e.target.value)}
                     />
                 )}
             />
