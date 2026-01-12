@@ -38,34 +38,31 @@ export function WarmingForm({ onSubmit }: WarmingFormProps) {
         >
             <Field
                 name="leaveTime"
-                children={({ state, handleChange, handleBlur }) => (
+                children={({ state, handleChange }) => (
                     <DateTimePicker
                         value={state.value}
                         label="Valitse lähtöaika"
                         onChange={(value) => handleChange(value)}
-                        onBlur={handleBlur}
                     />
                 )}
             />
             <Field
                 name="warmDuration"
-                children={({ state, handleChange, handleBlur }) => (
+                children={({ state, handleChange }) => (
                     <TimePicker
                         value={state.value}
                         label="Kuinka pitkään autoa lämmitetään?"
                         onChange={(value) => handleChange(value)}
-                        onBlur={handleBlur}
                     />
                 )}
             />
             <Field
                 name="offsetDuration"
-                children={({ state, handleChange, handleBlur }) => (
+                children={({ state, handleChange }) => (
                     <TimePicker
                         value={state.value}
                         label="Kuinka pitkään ajastin lämmittää autoa?"
                         onChange={(value) => handleChange(value)}
-                        onBlur={handleBlur}
                     />
                 )}
             />
